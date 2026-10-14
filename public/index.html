@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TikTok Live - Batalha Interativa 13 vs 22</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Container Principal 9:16 vertical para TikTok Live Studio -->
+  <div class="game-container" id="gameContainer">
+
+    <!-- Top Header -->
+    <header class="top-header">
+      <div class="header-pills">
+        <span class="pill simulation-pill">SIMULAÇÃO • JOGO DE ENTRETENIMENTO</span>
+        <span class="pill live-pill" id="livePill">
+          <span class="live-dot"></span> <span id="liveStatusText">AO VIVO</span>
+        </span>
+      </div>
+
+      <!-- Relógio Digital Grande -->
+      <div class="clock-display" id="clockDisplay">09:26</div>
+
+      <!-- Placar Geral Superior -->
+      <div class="scoreboard-bar">
+        <div class="score-stat">
+          <span class="stat-label">TOTAL</span>
+          <span class="stat-value" id="statTotal">0</span>
+        </div>
+        <div class="score-stat divider-left">
+          <span class="stat-label">DIFERENÇA</span>
+          <span class="stat-value" id="statDiff">0</span>
+        </div>
+        <div class="leader-badge" id="leaderBadge">
+          <span id="leaderText">EMPATE</span>
+        </div>
+      </div>
+
+      <!-- Meta Bar (1200 Pontos) -->
+      <div class="goal-wrapper">
+        <div class="goal-info">
+          <span>META PARA REINICIAR: <strong id="targetDisplay">1200</strong> PTS</span>
+          <span id="goalPercent">0%</span>
+        </div>
+        <div class="goal-bar-bg">
+          <div class="goal-bar-fill" id="goalBarFill"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Área de Batalha (Dois Lados) -->
+    <main class="battle-area">
+      <!-- Lado Esquerdo: 13 (Vermelho) -->
+      <section class="side-column side-left" id="sideLeft">
+        <div class="side-card red-card">
+          <div class="side-card-header">
+            <span class="candidate-number">13</span>
+            <div class="badge-front hidden" id="frontBadgeLeft">👑 NA FRENTE</div>
+          </div>
+
+          <div class="score-wrapper">
+            <div class="floating-points-container" id="floatContainerLeft"></div>
+            <div class="score-number" id="scoreLeft">0</div>
+            <span class="score-subtext">PONTOS</span>
+          </div>
+
+          <div class="percent-section">
+            <div class="percent-row">
+              <span class="percent-value" id="percentLeft">50.0%</span>
+              <span class="presents-count" id="giftsLeft">🎁 0 presentes</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill fill-red" id="progressLeft" style="width: 50%;"></div>
+            </div>
+          </div>
+
+          <!-- Ticker do último voto/presente -->
+          <div class="recent-ticker-box" id="tickerLeft">
+            <span class="ticker-text" id="tickerTextLeft">Aguardando votos...</span>
+          </div>
+        </div>
+
+        <!-- Urna Eletrônica Lado Esquerdo (13) -->
+        <div class="urna-container">
+          <div class="urna-box">
+            <div class="urna-screen">
+              <div class="urna-screen-header">VOTO PARA PRESIDENTE</div>
+              <div class="urna-digits-box">
+                <span class="urna-digit active" id="urnaDigitL1">1</span>
+                <span class="urna-digit active" id="urnaDigitL2">3</span>
+              </div>
+              <div class="urna-confirma-text">CONFIRMA para confirmar</div>
+            </div>
+            <div class="urna-keyboard">
+              <div class="keys-grid">
+                <span>1</span><span>2</span><span>3</span>
+                <span>4</span><span>5</span><span>6</span>
+                <span>7</span><span>8</span><span>9</span>
+                <span class="key-zero">0</span>
+              </div>
+              <div class="action-keys">
+                <button class="key-branco">BRANCO</button>
+                <button class="key-corrige">CORRIGE</button>
+                <button class="key-confirma" id="btnConfirmaLeft">CONFIRMA</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Braço / Mão animada votando -->
+          <div class="hand-anim-container hand-left" id="handLeft">
+            <div class="hand-arm"></div>
+            <div class="hand-finger"></div>
+          </div>
+        </div>
+
+        <!-- Ícone / Banner de Recompensa -->
+        <div class="vote-instruction-badge badge-red">
+          <div class="badge-icon">🌹</div>
+          <div class="badge-details">
+            <strong>ROSA = 5 PTS</strong>
+            <span>CHAT 13 = 1 PT</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lado Direito: 22 (Azul) -->
+      <section class="side-column side-right" id="sideRight">
+        <div class="side-card blue-card">
+          <div class="side-card-header">
+            <span class="candidate-number">22</span>
+            <div class="badge-front hidden" id="frontBadgeRight">👑 NA FRENTE</div>
+          </div>
+
+          <div class="score-wrapper">
+            <div class="floating-points-container" id="floatContainerRight"></div>
+            <div class="score-number" id="scoreRight">0</div>
+            <span class="score-subtext">PONTOS</span>
+          </div>
+
+          <div class="percent-section">
+            <div class="percent-row">
+              <span class="percent-value" id="percentRight">50.0%</span>
+              <span class="presents-count" id="giftsRight">🎁 0 presentes</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill fill-blue" id="progressRight" style="width: 50%;"></div>
+            </div>
+          </div>
+
+          <!-- Ticker do último voto/presente -->
+          <div class="recent-ticker-box" id="tickerRight">
+            <span class="ticker-text" id="tickerTextRight">Aguardando votos...</span>
+          </div>
+        </div>
+
+        <!-- Urna Eletrônica Lado Direito (22) -->
+        <div class="urna-container">
+          <div class="urna-box">
+            <div class="urna-screen">
+              <div class="urna-screen-header">VOTO PARA PRESIDENTE</div>
+              <div class="urna-digits-box">
+                <span class="urna-digit active" id="urnaDigitR1">2</span>
+                <span class="urna-digit active" id="urnaDigitR2">2</span>
+              </div>
+              <div class="urna-confirma-text">CONFIRMA para confirmar</div>
+            </div>
+            <div class="urna-keyboard">
+              <div class="keys-grid">
+                <span>1</span><span>2</span><span>3</span>
+                <span>4</span><span>5</span><span>6</span>
+                <span>7</span><span>8</span><span>9</span>
+                <span class="key-zero">0</span>
+              </div>
+              <div class="action-keys">
+                <button class="key-branco">BRANCO</button>
+                <button class="key-corrige">CORRIGE</button>
+                <button class="key-confirma" id="btnConfirmaRight">CONFIRMA</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Braço / Mão animada votando -->
+          <div class="hand-anim-container hand-right" id="handRight">
+            <div class="hand-arm arm-blue"></div>
+            <div class="hand-finger"></div>
+          </div>
+        </div>
+
+        <!-- Ícone / Banner de Recompensa -->
+        <div class="vote-instruction-badge badge-blue">
+          <div class="badge-icon">⚪</div>
+          <div class="badge-details">
+            <strong>ROSA BRANCA = 5 PTS</strong>
+            <span>CHAT 22 = 1 PT</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Barra Inferior de Regras Interativas para os Espectadores -->
+    <footer class="bottom-rules-bar">
+      <div class="rule-chip">
+        <span class="chip-badge red">13</span>
+        <span>Comente <strong>13</strong> (+1) ou envie <strong>Rosa</strong> (+5)</span>
+      </div>
+      <div class="rule-chip">
+        <span class="chip-badge blue">22</span>
+        <span>Comente <strong>22</strong> (+1) ou envie <strong>Rosa Branca</strong> (+5)</span>
+      </div>
+    </footer>
+
+    <!-- Overlay de Celebração de Vitória (quando chega em 1200) -->
+    <div class="victory-modal hidden" id="victoryModal">
+      <canvas id="confettiCanvas"></canvas>
+      <div class="victory-content">
+        <div class="trophy-icon">🏆</div>
+        <h2 class="victory-title" id="victoryTitle">13 VENCEU!</h2>
+        <p class="victory-subtitle">A META DE 1200 PONTOS FOI ATINGIDA!</p>
+        <div class="victory-countdown">
+          REINICIANDO O PLACAR EM: <span id="resetCountdown">5</span>s
+        </div>
+      </div>
+    </div>
+
+    <!-- Mini Dock Flutuante do Streamer (Controles rápidos e Testes) -->
+    <div class="streamer-dock-toggle" id="dockToggle">⚙️ Painel Streamer</div>
+    <div class="streamer-dock hidden" id="streamerDock">
+      <div class="dock-header">
+        <strong>⚙️ Controles da Live</strong>
+        <span class="close-dock" id="closeDock">✖</span>
+      </div>
+      <div class="dock-section">
+        <label>TikTok @Username:</label>
+        <div class="input-row">
+          <input type="text" id="dockTiktokUser" placeholder="seu_usuario">
+          <button class="btn-connect" id="btnDockConnect">Conectar</button>
+        </div>
+        <div class="status-indicator" id="dockStatus">Status: Desconectado</div>
+      </div>
+      <div class="dock-section">
+        <label>Testes Manuais Rápidos:</label>
+        <div class="btn-grid">
+          <button class="btn-test red" id="testChat13">Chat '13' (+1)</button>
+          <button class="btn-test red" id="testRosa13">Rosa (+5)</button>
+          <button class="btn-test blue" id="testChat22">Chat '22' (+1)</button>
+          <button class="btn-test blue" id="testRosa22">Rosa Branca (+5)</button>
+          <button class="btn-test" id="testAdd100L">+100 no 13</button>
+          <button class="btn-test" id="testAdd100R">+100 no 22</button>
+          <button class="btn-test yellow" id="testWin">Disparar Vitória</button>
+          <button class="btn-test reset" id="testReset">Zerar Placar</button>
+        </div>
+      </div>
+      <div class="dock-footer">
+        <label><input type="checkbox" id="soundToggle" checked> Efeitos Sonoros (Urna/Pililim)</label>
+        <a href="/admin.html" target="_blank" class="admin-link">Abrir Painel Completo em nova aba ↗</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
